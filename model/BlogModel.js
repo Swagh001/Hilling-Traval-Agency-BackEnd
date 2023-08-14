@@ -7,12 +7,12 @@
 const mongoose=require("mongoose");
 
 const BlogScema= mongoose.Schema({
-    Title:{type:String, required:true},
-    Category:{type:String, required:true},
-    Author:{type:String, required:true},
-    Content:{type:String, required:true},
-    Image:String,
-    userId:String
+    name:{type:String,},
+    date:{type:String,},
+    author:{type:String,},
+    Content:{type:String,},
+    img:String,
+    desc:String
 })
 
 const BlogModel=mongoose.model("blog",BlogScema);

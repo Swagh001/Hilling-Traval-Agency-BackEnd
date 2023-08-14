@@ -106,7 +106,7 @@ app.get("/blog",async(req,res)=>{
 
 app.get("/blog/:id",async(req,res)=>{
     // console.log(req.params.id);
-    let blog= await BlogModel.find();
+    let blog= await BlogModel.findBy();
     console.log(blog);
     res.send(blog)
 })
@@ -127,25 +127,6 @@ app.get("/data/:country",async(req,res)=>{
     }
 })
 
-// app.get("/data?sort=:asc",async(req,res)=>{
-//     console.log(req.params);
-//     // let data= await DataModel.find();
-//     // console.log(data);
-//     // let sortdata=
-//     res.send("blog")
-// })
-
-
-// app.get("/blog",async(req,res)=>{
-//     const AllBlogs=await BlogModel.find();
-//     console.log(AllBlogs)
-//     // if(AllBlogs){
-//     //     res.send("no block in there")
-//     // }
-//     // else{
-//         res.send({AllBlogs})
-//     // }
-// })
 
 // app.put("/blog/:id",authentication,async (req,res)=>{
 
@@ -203,6 +184,21 @@ app.post("/data",async(req,res)=>{
     res.send({"msg":"data added"});
 })
 
+
+app.post("/blog",async(req,res)=>{
+    
+    const data=req.body
+    // console.log(data);
+    
+    try{
+        const dataSave=new BlogModel(data);
+        await dataSave.save();
+        res.send({"msg":"blog added",data:data});
+    }
+    catch(e){
+        res.send({e});
+    }
+})
 
 app.listen(8081,async()=>{
     try{
