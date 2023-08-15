@@ -200,7 +200,8 @@ app.post("/blog",async(req,res)=>{
     }
 })
 
-app.listen(8081,async()=>{
+let port=process.env.PORT || 8081;
+app.listen(port,async()=>{
     try{
         await connection
         console.log("connected");          
