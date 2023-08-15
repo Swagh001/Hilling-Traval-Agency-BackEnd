@@ -106,7 +106,7 @@ app.get("/blog",async(req,res)=>{
 
 app.get("/blog/:id",async(req,res)=>{
     // console.log(req.params.id);
-    let blog= await BlogModel.findBy();
+    let blog= await BlogModel.find();
     console.log(blog);
     res.send(blog)
 })
